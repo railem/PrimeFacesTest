@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="template.xhtml">
+    <ui:define name="content">
+
+        <h:form id="form">
+            <p:growl id="msgs" showDetail="true" />
+        </h:form>
+
+        <!--<h:messages />-->
+        <!--<h:dataTable value="#{listController.users}" var="u"
+                     styleClass="table"
+                     headerClass="order-table-header"
+                     rowClasses="order-table-odd-row,order-table-even-row"
+        >
+            <h:column>
+                <f:facet name="header">Id</f:facet>
+                #{u.id}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Username</f:facet>
+                #{u.username}
+            </h:column>
+            <h:column>
+                <f:facet name="header">First Name</f:facet>
+                #{u.firstName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Last Name</f:facet>
+                #{u.lastName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Age</f:facet>
+                #{u.age}
+            </h:column>
+        </h:dataTable>-->
+        <p:dataTable id="userTable" var="user" value="#{listController.users}" selectionMode="single" dblClickSelect="true" selection="#{listController.selectedUser}" rowKey="#{user.id}">
+            <f:facet name="header">
+                Select Events
+            </f:facet>
+            <!--<p:ajax event="rowSelect" listener="#{listController.onRowSelect}" update=":form:msgs" />
+            <p:ajax event="rowUnselect" listener="#{listController.onRowUnselect}" update=":form:msgs" />-->
+            <p:ajax event="rowDblselect" listener="#{listController.onDoubleClick}" update=":form:msgs" global="false" />
+            <p:column headerText="Id">
+                <h:outputText value="#{user.id}" />
+            </p:column>
+            <p:column headerText="Username">
+                <h:outputText value="#{user.username}" />
+            </p:column>
+            <p:column headerText="irst Name">
+                <h:outputText value="#{user.firstName}" />
+            </p:column>
+            <p:column headerText="Last Name">
+                <h:outputText value="#{user.lastName}" />
+            </p:column>
+            <p:column headerText="Age">
+                <h:outputText value="#{user.age}" />
+            </p:column>
+        </p:dataTable>
+
+        <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
+            <h:form>
+                <h:outputLabel for="username">Enter username:</h:outputLabel>
+                <p:spinner id="basic" value="#{listController.selectedUser.age}" />
+
+                    <h:outputLabel for="firstName">Enter first name:</h:outputLabel>
+                    <h:inputText id="firstName" value="#{user.firstName}" />
+                    <h:message for="firstName" />
+
+                    <h:outputLabel for="lastName">Enter last name:</h:outputLabel>
+                    <h:inputText id="lastName" value="#{user.lastName}" />
+                    <h:message for="lastName" />
+
+                    <h:outputLabel for="age">Enter Age:</h:outputLabel>
+                    <h:inputText id="age" value="#{user.age}" />
+                    <h:message for="age" />
+                <h:commandButton action="#{createController.create}" value="Save" />
+            </h:form>
+        </p:dialog>
+    </ui:define>
+</ui:composition>
+</html>

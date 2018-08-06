@@ -1,0 +1,8 @@
+/home/djedinger/workspace/quickstart/dustin-greeter/src/main/java/org/jboss/as/quickstarts/greeter/domain/User.java
+/home/djedinger/workspace/quickstart/dustin-greeter/src/main/java/org/jboss/as/quickstarts/greeter/web/CreateController.java
+/home/djedinger/workspace/quickstart/dustin-greeter/src/main/java/org/jboss/as/quickstarts/greeter/Resources.java
+/home/djedinger/workspace/quickstart/dustin-greeter/src/main/java/org/jboss/as/quickstarts/greeter/domain/EJBUserDao.java
+/home/djedinger/workspace/quickstart/dustin-greeter/src/main/java/org/jboss/as/quickstarts/greeter/web/ListController.java
+/home/djedinger/workspace/quickstart/dustin-greeter/src/main/java/org/jboss/as/quickstarts/greeter/web/GreetController.java
+/home/djedinger/workspace/quickstart/dustin-greeter/src/main/java/org/jboss/as/quickstarts/greeter/domain/ManagedBeanUserDao.java
+/home/djedinger/workspace/quickstart/dustin-greeter/src/main/java/org/jboss/as/quickstarts/greeter/domain/UserDao.java
