@@ -41,14 +41,17 @@ public class ListController {
 
     public void onDoubleClick(SelectEvent event) {
 
-        //selectedUser = (User) event.getObject();
+        selectedUser = (User) event.getObject();
         RequestContext context = RequestContext.getCurrentInstance();
         context.execute("PF('dlg2').show();");
 
-        System.out.println("CLICK");
+        System.out.println( selectedUser.getFirstName()+ "---------------aaa");
     }
 
     public void onRowSelect(SelectEvent event) {
+
+        selectedUser = (User) event.getObject();
+
         FacesMessage msg = new FacesMessage("Car Selected", ((User) event.getObject()).getId() + "");
         FacesContext.getCurrentInstance().addMessage(null, msg);
     }

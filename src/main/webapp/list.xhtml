@@ -39,13 +39,14 @@
                 #{u.age}
             </h:column>
         </h:dataTable>-->
-        <p:dataTable id="userTable" var="user" value="#{listController.users}" selectionMode="single" dblClickSelect="true" selection="#{listController.selectedUser}" rowKey="#{user.id}">
+        <p:dataTable id="userTable" var="user" value="#{listController.users}" selectionMode="single" dblClickSelect="true"
+                     selection="#{listController.selectedUser}" rowKey="#{user.id}">
             <f:facet name="header">
                 Select Events
             </f:facet>
-            <!--<p:ajax event="rowSelect" listener="#{listController.onRowSelect}" update=":form:msgs" />
-            <p:ajax event="rowUnselect" listener="#{listController.onRowUnselect}" update=":form:msgs" />-->
-            <p:ajax event="rowDblselect" listener="#{listController.onDoubleClick}" update=":form:msgs" global="false" />
+            <p:ajax event="rowSelect" listener="#{listController.onRowSelect}" update=":form:msgs" />
+            <p:ajax event="rowUnselect" listener="#{listController.onRowUnselect}" update=":form:msgs" />
+            <p:ajax event="rowDblselect" listener="#{listController.onDoubleClick}" update="editDialog" global="false" />
             <p:column headerText="Id">
                 <h:outputText value="#{user.id}" />
             </p:column>
@@ -63,24 +64,26 @@
             </p:column>
         </p:dataTable>
 
-        <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="100">
-            <h:form>
+        <p:dialog header="Modal Dialog" widgetVar="dlg2" modal="true" height="300" width="400" dynamic="true" id="editDialog">
+            <h:panelGroup id="dialogContent">
+                <h:panelGrid columns="2" id="fieldGrid">
                 <h:outputLabel for="username">Enter username:</h:outputLabel>
                 <p:spinner id="basic" value="#{listController.selectedUser.age}" />
 
                     <h:outputLabel for="firstName">Enter first name:</h:outputLabel>
-                    <h:inputText id="firstName" value="#{user.firstName}" />
+                    <h:inputText id="firstName" value="#{listController.selectedUser.firstName}" />
                     <h:message for="firstName" />
 
                     <h:outputLabel for="lastName">Enter last name:</h:outputLabel>
-                    <h:inputText id="lastName" value="#{user.lastName}" />
+                    <h:inputText id="lastName" value="#{listController.selectedUser.lastName}" />
                     <h:message for="lastName" />
 
                     <h:outputLabel for="age">Enter Age:</h:outputLabel>
-                    <h:inputText id="age" value="#{user.age}" />
+                    <h:inputText id="age" value="#{listController.selectedUser.username}" />
                     <h:message for="age" />
+                </h:panelGrid>
                 <h:commandButton action="#{createController.create}" value="Save" />
-            </h:form>
+            </h:panelGroup>
         </p:dialog>
     </ui:define>
 </ui:composition>
