@@ -1,5 +1,8 @@
 include::../shared-doc/attributes.adoc[]
 
+
+https://github.com/philiplowney/managingAListViaDialog
+
 = greeter: Demonstrates CDI, JPA, JTA, EJB, and JSF
 :author: Pete Muir
 :level: Beginner
